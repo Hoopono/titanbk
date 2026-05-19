@@ -1,196 +1,806 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>TitanBK | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ho'oponopono: O Milagre da Cura Interior</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-/* FONDO ORIGINAL */
-
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(270deg,#0b0f1a,#1e3a8a,#0b0f1a);
-background-size:600% 600%;
-animation:gradientBG 20s ease infinite;
-color:white;
-text-align:center;
+:root {
+  --gold: #5C2800;
+  --gold-light: #2E1000;
+  --dark: #F5D08A;
+  --cream: #1A0A00;
+  --muted: rgba(30,10,0,0.85);
+  --bg-warm: #F5D08A;
 }
 
-@keyframes gradientBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+body {
+  background: linear-gradient(160deg, #FCEABB 0%, #F8C471 25%, #E8A84C 50%, #D4893A 75%, #C07030 100%);
+  color: var(--cream);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
 }
 
-.sky{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:-1;
-overflow:hidden;
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
 }
 
-/* estrellas */
-
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite alternate;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('principal.jpg') center/cover no-repeat;
+  opacity: 0.55;
+  filter: saturate(1.1);
 }
 
-@keyframes twinkle{
-from{opacity:0.3;}
-to{opacity:1;}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(248,196,113,0.55) 0%,
+    rgba(232,168,76,0.3) 40%,
+    rgba(212,137,58,0.75) 100%);
 }
 
-/* luna */
-
-.moon{
-position:absolute;
-top:80px;
-left:-200px;
-width:120px;
-height:120px;
-background:#e5e7eb;
-border-radius:50%;
-box-shadow:0 0 40px white;
-animation:moonMove 40s linear infinite;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
 }
 
-@keyframes moonMove{
-from{left:-200px;}
-to{left:110%;}
+.tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #5C2800;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: up 0.9s ease 0.2s forwards;
 }
 
-/* CONTENIDO */
-
-.container{
-margin-top:120px;
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #3D1A00;
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: up 0.9s ease 0.5s forwards;
 }
 
-/* cabeza */
-
-.head{
-width:130px;
-border-radius:12px;
-border:3px solid #38bdf8;
-transition:0.3s;
-cursor:pointer;
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: #5C2800;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: up 0.9s ease 0.8s forwards;
 }
 
-.head:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px #38bdf8;
+.mantra {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: up 0.9s ease 1s forwards;
 }
 
-/* botones */
-
-.buttons{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
+.mantra span {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: #5C2800;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(92,40,0,0.4);
 }
 
-.btn{
-background:#1e3a8a;
-padding:14px 28px;
-border-radius:10px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-border:2px solid #38bdf8;
-position:relative;
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #5C2800, #8B4A00, #6B3500);
+  color: #FCEABB;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1rem 2.8rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 35px rgba(92,40,0,0.3);
+  opacity: 0;
+  animation: up 0.9s ease 1.2s forwards;
+  cursor: pointer;
+  border: none;
 }
 
-/* tooltip */
-
-.btn::after{
-content:"Click aquí";
-position:absolute;
-bottom:120%;
-left:50%;
-transform:translateX(-50%);
-background:#111827;
-color:white;
-padding:5px 10px;
-border-radius:6px;
-font-size:12px;
-opacity:0;
-pointer-events:none;
-transition:0.2s;
-white-space:nowrap;
+.btn:hover {
+  box-shadow: 0 0 60px rgba(92,40,0,0.5);
+  transform: translateY(-2px);
 }
 
-.btn:hover::after{
-opacity:1;
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards;
 }
 
-.btn:hover{
-background:#2563eb;
-transform:translateY(-3px);
-box-shadow:0 0 15px #38bdf8;
+.scroll-hint span {
+  display: block;
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, #5C2800, transparent);
+  margin: 0 auto;
 }
 
-h1{
-font-family:'Orbitron',sans-serif;
-color:#38bdf8;
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { to { opacity: 0.5; } }
+
+/* SECTIONS */
+.sec {
+  padding: 5rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
+.sec-center { text-align: center; }
+
+.label {
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #5C2800;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #3D1A00;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+p { font-size: 1rem; line-height: 1.85; color: rgba(30,10,0,0.88); font-weight: 400; }
+
+hr.line {
+  border: none;
+  border-top: 1px solid rgba(92,40,0,0.2);
+}
+
+.full-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  opacity: 0.92;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* ITEMS */
+.items {
+  margin-top: 2.5rem;
+  border: 1px solid rgba(92,40,0,0.2);
+}
+
+.item {
+  padding: 1.3rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-bottom: 1px solid rgba(92,40,0,0.1);
+  transition: background 0.25s;
+}
+
+.item:last-child { border-bottom: none; }
+.item:hover { background: rgba(92,40,0,0.06); }
+
+.dot {
+  width: 5px; height: 5px;
+  background: #8B4A00;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.item p { font-size: 0.93rem; color: #1A0A00; margin: 0; line-height: 1.4; font-weight: 500; }
+
+/* PRICE */
+.price-box {
+  border: 1px solid rgba(92,40,0,0.3);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+}
+
+.price-box::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 25%; right: 25%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8B4A00, transparent);
+}
+
+.price-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #5C2800;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.price-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: #3D1A00;
+  line-height: 1;
+}
+
+.price-curr {
+  font-size: 1.3rem;
+  vertical-align: super;
+  color: #5C2800;
+}
+
+.price-note {
+  font-size: 0.72rem;
+  color: rgba(30,10,0,0.7);
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 2rem;
+}
+
+.btn-solid {
+  display: inline-block;
+  background: linear-gradient(135deg, #5C2800, #8B4A00, #6B3500);
+  color: #FCEABB;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1rem 2.8rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 0 30px rgba(92,40,0,0.25);
+  cursor: pointer;
+  border: none;
+  opacity: 1;
+  animation: none;
+}
+
+.btn-solid:hover {
+  box-shadow: 0 0 55px rgba(92,40,0,0.45);
+  transform: translateY(-2px);
+}
+
+.secure {
+  margin-top: 1.2rem;
+  font-size: 0.7rem;
+  color: rgba(30,10,0,0.6);
+  letter-spacing: 0.06em;
+}
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid rgba(92,40,0,0.15); }
+
+.faq-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  color: #1A0A00;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.93rem;
+  font-weight: 700;
+  text-align: left;
+  transition: color 0.25s;
+}
+
+.faq-btn:hover { color: #5C2800; }
+
+.faq-icon {
+  color: #8B4A00;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+  font-style: normal;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-ans {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+}
+
+.faq-item.open .faq-ans { max-height: 200px; }
+.faq-ans p { padding-bottom: 1.2rem; font-size: 0.9rem; }
+
+/* FINAL */
+.final {
+  text-align: center;
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-bg {
+  position: absolute;
+  inset: 0;
+  background: url('principal.jpg') center/cover;
+  opacity: 0.2;
+  filter: saturate(1.1);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(248,196,113,0.2) 0%, rgba(212,137,58,0.85) 100%);
+}
+
+.final-content { position: relative; z-index: 2; }
+
+.final-phrase {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: #3D1A00;
+  line-height: 2.3;
+  margin-bottom: 2.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(92,40,0,0.15);
+}
+
+footer p {
+  font-size: 0.68rem;
+  color: rgba(61,26,0,0.4);
+  letter-spacing: 0.08em;
+  line-height: 2;
+}
+
+/* REVEAL */
+.r {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.r.on { opacity: 1; transform: none; }
+
+/* MOBILE MELHORADO */
+@media (max-width: 480px) {
+  .hero { padding: 2rem 1rem; min-height: 100svh; }
+  h1 { font-size: 2.2rem; }
+  .subtitle { font-size: 1rem; }
+  .mantra { gap: 0.5rem; }
+  .mantra span { font-size: 0.62rem; padding: 0.35rem 0.7rem; }
+  .btn { padding: 0.9rem 2rem; font-size: 0.72rem; }
+
+  .sec { padding: 3rem 1rem; }
+  h2 { font-size: 1.5rem; }
+
+  .hero-img-frame { margin: 1.5rem auto; padding: 14px; }
+  .hero-frame-img { max-height: 360px; }
+
+  .full-img { max-height: 260px; }
+
+  .price-box { padding: 2rem 1rem; }
+  .price-num { font-size: 3.8rem; }
+  .btn-solid { padding: 0.9rem 1.5rem; font-size: 0.72rem; width: 100%; }
+
+  /* Modal mobile */
+  #modal-checkout {
+    width: 95vw !important;
+    max-height: 88vh !important;
+    top: 50% !important;
+  }
+  #modal-checkout [style*="flex:0 0 auto"] {
+    width: 100% !important;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  #modal-checkout [style*="flex:0 0 auto"] img {
+    min-height: 180px !important;
+    max-height: 200px;
+    object-position: center 20% !important;
+  }
+  #modal-checkout [style*="flex:1;min-width"] {
+    padding: 1.2rem 1rem !important;
+    gap: 0.7rem !important;
+  }
+  #modal-checkout h3 { font-size: 1.05rem !important; }
+  #modal-checkout [style*="font-size:2.8rem"] { font-size: 2.2rem !important; }
+
+  .items { margin-top: 1.5rem; }
+  .item { padding: 1rem 1.2rem; gap: 0.9rem; }
+  .item p { font-size: 0.88rem; }
+
+  .faq-btn { font-size: 0.88rem; }
+
+  .final { padding: 3rem 1rem; }
+  .final-phrase { font-size: 1rem; line-height: 2; }
+
+  footer p { font-size: 0.62rem; }
+}
 </style>
 </head>
-
 <body>
 
-<div class="sky">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Ho'oponopono</h1>
+    <p class="subtitle">O Milagre da Cura Interior</p>
+    <div class="mantra">
+      <span>Sinto muito</span>
+      <span>Me perdoe</span>
+      <span>Eu te amo</span>
+      <span>Sou grato</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span></div>
+</section>
 
-<div class="moon"></div>
-
-<div class="star" style="top:10%;left:20%"></div>
-<div class="star" style="top:30%;left:70%"></div>
-<div class="star" style="top:50%;left:40%"></div>
-<div class="star" style="top:80%;left:10%"></div>
-<div class="star" style="top:60%;left:80%"></div>
-<div class="star" style="top:20%;left:50%"></div>
-
+<!-- IMAGEM COM BORDA DECORATIVA -->
+<div class="hero-img-frame">
+  <div class="frame-corner frame-tl"></div>
+  <div class="frame-corner frame-tr"></div>
+  <div class="frame-corner frame-bl"></div>
+  <div class="frame-corner frame-br"></div>
+  <div class="frame-line frame-top"></div>
+  <div class="frame-line frame-bottom"></div>
+  <div class="frame-line frame-left"></div>
+  <div class="frame-line frame-right"></div>
+  <img src="principal.jpg" class="hero-frame-img" alt="Ho'oponopono">
 </div>
 
-<div class="container">
+<style>
+.hero-img-frame {
+  position: relative;
+  margin: 3rem auto;
+  max-width: 860px;
+  padding: 18px;
+}
 
-<h1>TitanBK</h1>
+.hero-frame-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 560px;
+  filter: saturate(1.05) contrast(1.02);
+}
 
-<a href="https://namemc.com/profile/TitanBK" target="_blank">
-<img class="head" src="https://mc-heads.net/avatar/TitanBK/130">
-</a>
+/* Cantos decorativos */
+.frame-corner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  z-index: 2;
+}
+.frame-tl { top: 0; left: 0; border-top: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
+.frame-tr { top: 0; right: 0; border-top: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
+.frame-bl { bottom: 0; left: 0; border-bottom: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
+.frame-br { bottom: 0; right: 0; border-bottom: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
 
-<div class="buttons">
+/* Linhas centrais finas */
+.frame-line { position: absolute; background: rgba(139,74,0,0.35); z-index: 2; }
+.frame-top    { top: 0;    left: 38px; right: 38px; height: 1px; }
+.frame-bottom { bottom: 0; left: 38px; right: 38px; height: 1px; }
+.frame-left   { left: 0;   top: 38px; bottom: 38px; width: 1px; }
+.frame-right  { right: 0;  top: 38px; bottom: 38px; width: 1px; }
 
-<a class="btn" href="staff.html">
-Staff Portfolio
-</a>
+/* Brilho dourado atrás da imagem */
+.hero-img-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,150,58,0.18), rgba(248,196,113,0.08), rgba(201,150,58,0.18));
+  pointer-events: none;
+  z-index: 1;
+}
+/* Ornamento central topo e base */
+.hero-img-frame::after {
+  content: '✦';
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8B4A00;
+  font-size: 1rem;
+  background: linear-gradient(160deg, #FCEABB, #F8C471);
+  padding: 0 0.6rem;
+  z-index: 3;
+}
+</style>
 
-<a class="btn" href="https://discord.com/users/bosito1 "discord-button>
-Contacto
-</a>
+<!-- SOBRE -->
 
-<a class="btn" href="servidor.html">
-Desarrollador de Servidores
-</a>
-
+<div class="sec sec-center">
+  <span class="label r">O iBook</span>
+  <h2 class="r">Uma prática que transforma por dentro</h2>
+  <p class="r">Ho'oponopono é a arte havaiana de curar memórias que nos prendem — mágoas, culpas, padrões que se repetem. Com quatro frases simples, você inicia um processo profundo de limpeza interior que muda tudo ao seu redor.</p>
 </div>
 
+<hr class="line">
+
+<!-- IMAGEM + CONTEÚDO -->
+
+<div class="sec">
+  <span class="label r">O que está incluído</span>
+  <h2 class="r">Tudo que você precisa para começar</h2>
+  <div class="items r">
+    <div class="item"><div class="dot"></div><p>A origem e história do Ho'oponopono</p></div>
+    <div class="item"><div class="dot"></div><p>O significado profundo das 4 frases sagradas</p></div>
+    <div class="item"><div class="dot"></div><p>Como curar relacionamentos e mágoas antigas</p></div>
+    <div class="item"><div class="dot"></div><p>Práticas e meditações para o dia a dia</p></div>
+    <div class="item"><div class="dot"></div><p>Cura financeira e desbloqueio de abundância</p></div>
+    <div class="item"><div class="dot"></div><p>Download imediato em PDF · Acesso vitalício</p></div>
+  </div>
 </div>
 
+<hr class="line">
+
+<!-- PREÇO -->
+
+<div class="sec sec-center" id="comprar">
+  <span class="label r">Invista na sua cura</span>
+  <h2 class="r">Comece hoje</h2>
+  <div class="price-box r">
+    <p class="price-title">Ho'oponopono: O Milagre da Cura Interior</p>
+    <div class="price-num"><span class="price-curr">R$</span>47</div>
+    <p class="price-note">pagamento único · acesso vitalício</p>
+    <button class="btn-solid" onclick="abrirModal()">Comprar agora</button>
+    <p class="secure">🔒 Pagamento 100% seguro · Download imediato</p>
+  </div>
+</div>
+
+<div id="modal-overlay" onclick="fecharModal()" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(20,8,0,0.75);
+  z-index:1000;
+  backdrop-filter:blur(6px);
+"></div>
+
+<div id="modal-checkout" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1001;
+  width:min(92vw, 820px);
+  max-height:90vh;
+  overflow-y:auto;
+  background:linear-gradient(145deg,#FDF3DC,#F5DFA0);
+  box-shadow:0 30px 80px rgba(20,8,0,0.5);
+  animation: slideUp 0.35s ease;
+  padding:6px;
+">
+  <!-- Borda decorativa externa -->
+  <div style="
+    position:relative;
+    border:1px solid rgba(139,74,0,0.6);
+    padding:4px;
+  ">
+    <!-- Segundo fio interno -->
+    <div style="
+      position:relative;
+      border:1px solid rgba(139,74,0,0.25);
+    ">
+      <!-- Cantos ornamentais -->
+      <div style="position:absolute;top:-1px;left:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-left:2px solid #8B4A00;"></div>
+      <div style="position:absolute;top:-1px;right:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-right:2px solid #8B4A00;"></div>
+      <div style="position:absolute;bottom:-1px;left:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-left:2px solid #8B4A00;"></div>
+      <div style="position:absolute;bottom:-1px;right:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-right:2px solid #8B4A00;"></div>
+      <!-- Ornamento topo centro -->
+      <div style="position:absolute;top:-0.65rem;left:50%;transform:translateX(-50%);background:linear-gradient(160deg,#FDF3DC,#F5DFA0);padding:0 0.8rem;color:#8B4A00;font-size:0.9rem;letter-spacing:0.3em;">✦ ✦ ✦</div>
+
+      <!-- Botão fechar -->
+      <button onclick="fecharModal()" style="
+        position:absolute;
+        top:0.7rem;right:0.9rem;
+        background:none;border:none;
+        font-size:1.2rem;color:#5C2800;
+        cursor:pointer;line-height:1;z-index:2;
+        opacity:0.7;
+      ">✕</button>
+
+      <div style="display:flex;flex-wrap:wrap;">
+
+        <!-- Coluna esquerda: imagem -->
+        <div style="flex:0 0 auto;width:min(100%,300px);">
+          <img src="principal.jpg"
+            style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:300px;" alt="Ho'oponopono">
+        </div>
+
+        <!-- Coluna direita -->
+        <div style="flex:1;min-width:240px;padding:2rem 1.6rem;display:flex;flex-direction:column;gap:1rem;">
+
+          <span style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:#8B4A00;font-weight:600;">Seu pedido</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A0A00;line-height:1.3;margin:0;">Ho'oponopono:<br><em>O Milagre da Cura Interior</em></h3>
+
+          <!-- Linha decorativa -->
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(139,74,0,0.4));"></div>
+            <span style="color:#8B4A00;font-size:0.6rem;">✦</span>
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(139,74,0,0.4),transparent);"></div>
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Guia espiritual completo em PDF</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Cura emocional, financeira e de relacionamentos</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Plano de 21 dias de prática guiada</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Acesso vitalício · Download imediato</li>
+          </ul>
+
+          <div style="border-top:1px solid rgba(92,40,0,0.2);padding-top:0.9rem;display:flex;align-items:baseline;gap:0.4rem;">
+            <span style="font-size:0.85rem;color:#5C2800;">R$</span>
+            <span style="font-family:'Playfair Display',serif;font-size:2.8rem;color:#1A0A00;line-height:1;">47</span>
+            <span style="font-size:0.7rem;color:#8B4A00;letter-spacing:0.08em;">pagamento único</span>
+          </div>
+
+          <!-- Só nome -->
+          <input id="campo-nome" type="text" placeholder="Seu nome completo" style="
+            padding:0.75rem 1rem;
+            border:1px solid rgba(92,40,0,0.35);
+            background:rgba(255,255,255,0.65);
+            color:#1A0A00;
+            font-family:'Nunito',sans-serif;
+            font-size:0.88rem;
+            outline:none;
+            width:100%;
+          ">
+
+          <button onclick="irParaPagamento()" style="
+            background:linear-gradient(135deg,#5C2800,#8B4A00,#6B3500);
+            color:#FCEABB;
+            font-family:'Nunito',sans-serif;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.22em;
+            text-transform:uppercase;
+            padding:1rem;
+            border:none;
+            cursor:pointer;
+            width:100%;
+            box-shadow:0 0 25px rgba(92,40,0,0.3);
+            transition:all 0.3s;
+          " onmouseover="this.style.boxShadow='0 0 45px rgba(92,40,0,0.55)'"
+             onmouseout="this.style.boxShadow='0 0 25px rgba(92,40,0,0.3)'">
+            Finalizar pagamento →
+          </button>
+
+          <p style="font-size:0.65rem;color:rgba(30,10,0,0.45);text-align:center;letter-spacing:0.05em;">🔒 Pagamento 100% seguro · Seus dados estão protegidos</p>
+        </div>
+      </div>
+
+      <!-- Ornamento base centro -->
+      <div style="text-align:center;padding:0.5rem 0 0.8rem;color:#8B4A00;font-size:0.6rem;letter-spacing:0.5em;opacity:0.6;">✦ ✦ ✦</div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes slideUp {
+  from { opacity:0; transform:translate(-50%,-46%); }
+  to   { opacity:1; transform:translate(-50%,-50%); }
+}
+#modal-checkout::-webkit-scrollbar { width:4px; }
+#modal-checkout::-webkit-scrollbar-track { background:transparent; }
+#modal-checkout::-webkit-scrollbar-thumb { background:rgba(92,40,0,0.3); border-radius:2px; }
+</style>
+
+<script>
+function abrirModal() {
+  document.getElementById('modal-overlay').style.display = 'block';
+  document.getElementById('modal-checkout').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal() {
+  document.getElementById('modal-overlay').style.display = 'none';
+  document.getElementById('modal-checkout').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function irParaPagamento() {
+  const nome = document.getElementById('campo-nome').value.trim();
+  if (!nome) {
+    alert('Por favor, preencha seu nome para continuar.');
+    return;
+  }
+  // ← Substitua a URL abaixo pelo seu link de pagamento real
+  window.location.href = 'https://SEU-LINK-DE-PAGAMENTO.com';
+}
+</script>
+
+<hr class="line">
+
+<!-- FAQ -->
+<div class="sec">
+  <span class="label r">Dúvidas</span>
+  <h2 class="r">Perguntas frequentes</h2>
+  <div class="r">
+    <div class="faq-item">
+      <button class="faq-btn">Preciso ter experiência espiritual?<i class="faq-icon">+</i></button>
+      <div class="faq-ans"><p>Não. O iBook é escrito de forma simples e acessível para qualquer pessoa, independente do nível de conhecimento espiritual.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">Como recebo após a compra?<i class="faq-icon">+</i></button>
+      <div class="faq-ans"><p>Você recebe o link de download por e-mail imediatamente após a confirmação do pagamento. Funciona em celular, tablet e computador.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">Quando começo a ver resultados?<i class="faq-icon">+</i></button>
+      <div class="faq-ans"><p>Muitas pessoas sentem leveza já nas primeiras práticas. A transformação profunda vem com a constância — o iBook inclui um plano de 21 dias para guiar você.</p></div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer>
+  <p>© 2025 Ho'oponopono: O Milagre da Cura Interior · Todos os direitos reservados</p>
+</footer>
+
+<script>
+const els = document.querySelectorAll('.r');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('on'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+els.forEach(el => obs.observe(el));
+
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
 </body>
 </html>
