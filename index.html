@@ -5,6 +5,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ho'oponopono: O Milagre da Cura Interior</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+  ✏️  CONFIGURAÇÃO — EDITE AQUI ANTES DE QUALQUER COISA
+  ============================================================ -->
+<script>
+
+  // ============================================================
+  // 💰 1. PREÇOS (só o número, sem R$)
+  // ============================================================
+  const PRECO_PRINCIPAL = 47;   // Produto principal
+
+  const PRECO_BUMP1     = 27;   // Bump 1: Meditação Guiada
+  const PRECO_BUMP2     = 17;   // Bump 2: Caderno de Prática
+  const PRECO_BUMP3     = 37;   // Bump 3: [Nome do seu produto 3]
+  const PRECO_BUMP4     = 22;   // Bump 4: [Nome do seu produto 4]
+
+  // ============================================================
+  // 🔗 2. LINKS DE PAGAMENTO
+  //    Use a chave = combinação de bumps ativos separados por _
+  //    Exemplos: 'B1'='só bump1', 'B1_B3'='bump1+bump3', '' = só principal
+  // ============================================================
+  const LINKS = {
+    ''           : 'https://SEU-LINK-BASE.com',
+    'B1'         : 'https://SEU-LINK-B1.com',
+    'B2'         : 'https://SEU-LINK-B2.com',
+    'B3'         : 'https://SEU-LINK-B3.com',
+    'B4'         : 'https://SEU-LINK-B4.com',
+    'B1_B2'      : 'https://SEU-LINK-B1-B2.com',
+    'B1_B3'      : 'https://SEU-LINK-B1-B3.com',
+    'B1_B4'      : 'https://SEU-LINK-B1-B4.com',
+    'B2_B3'      : 'https://SEU-LINK-B2-B3.com',
+    'B2_B4'      : 'https://SEU-LINK-B2-B4.com',
+    'B3_B4'      : 'https://SEU-LINK-B3-B4.com',
+    'B1_B2_B3'   : 'https://SEU-LINK-B1-B2-B3.com',
+    'B1_B2_B4'   : 'https://SEU-LINK-B1-B2-B4.com',
+    'B1_B3_B4'   : 'https://SEU-LINK-B1-B3-B4.com',
+    'B2_B3_B4'   : 'https://SEU-LINK-B2-B3-B4.com',
+    'B1_B2_B3_B4': 'https://SEU-LINK-TODOS.com',
+  };
+
+  // ============================================================
+  // 👁️ 3. QUAIS BUMPS APARECEM NO MODAL?
+  //    true  = aparece para o cliente escolher
+  //    false = fica oculto (não aparece)
+  // ============================================================
+  const BUMP_ATIVO = {
+    1: true,    // Bump 1: Meditação Guiada
+    2: true,    // Bump 2: Caderno de Prática
+    3: false,   // Bump 3: [seu produto 3] — mude para true para ativar
+    4: false,   // Bump 4: [seu produto 4] — mude para true para ativar
+  };
+
+  // ============================================================
+  // 📝 4. TEXTOS DOS BUMPS
+  // ============================================================
+  const BUMP_TITULO = {
+    1: 'Meditação Guiada de Limpeza Profunda',
+    2: 'Ritual das 4 Frases — Caderno de Prática',
+    3: '[Título do Produto 3]',
+    4: '[Título do Produto 4]',
+  };
+
+  const BUMP_DESCRICAO = {
+    1: 'Áudio de 21 minutos para ativar o Ho\'oponopono enquanto dorme — acelera a limpeza das memórias e aprofunda sua transformação.',
+    2: 'PDF interativo com 30 dias de exercícios diários guiados para fixar o Ho\'oponopono como hábito e multiplicar os resultados.',
+    3: '[Descrição do produto 3 — explique o benefício principal em 2 linhas.]',
+    4: '[Descrição do produto 4 — explique o benefício principal em 2 linhas.]',
+  };
+
+  // ⛔ NÃO MEXA ABAIXO DESTA LINHA
+</script>
+
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -20,22 +92,21 @@ html { scroll-behavior: smooth; }
 
 body {
   background: linear-gradient(160deg, #FCEABB 0%, #F8C471 25%, #E8A84C 50%, #D4893A 75%, #C07030 100%);
+  background-attachment: fixed;
   color: var(--cream);
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
-  min-height: 100vh;
 }
 
-/* HERO */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem 2.5rem;
   overflow: hidden;
 }
 
@@ -161,7 +232,6 @@ h1 {
 }
 @keyframes fadeIn { to { opacity: 0.5; } }
 
-/* SECTIONS */
 .sec {
   padding: 5rem 1.5rem;
   max-width: 680px;
@@ -204,7 +274,6 @@ hr.line {
   filter: saturate(1.05) contrast(1.02);
 }
 
-/* ITEMS */
 .items {
   margin-top: 2.5rem;
   border: 1px solid rgba(92,40,0,0.2);
@@ -231,7 +300,6 @@ hr.line {
 
 .item p { font-size: 0.93rem; color: #1A0A00; margin: 0; line-height: 1.4; font-weight: 500; }
 
-/* PRICE */
 .price-box {
   border: 1px solid rgba(92,40,0,0.3);
   padding: 3rem 2rem;
@@ -308,7 +376,6 @@ hr.line {
   letter-spacing: 0.06em;
 }
 
-/* FAQ */
 .faq-item { border-bottom: 1px solid rgba(92,40,0,0.15); }
 
 .faq-btn {
@@ -350,10 +417,9 @@ hr.line {
 .faq-item.open .faq-ans { max-height: 200px; }
 .faq-ans p { padding-bottom: 1.2rem; font-size: 0.9rem; }
 
-/* FINAL */
 .final {
   text-align: center;
-  padding: 5rem 1.5rem;
+  padding: 6rem 1.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -372,31 +438,228 @@ hr.line {
   background: radial-gradient(ellipse at center, rgba(248,196,113,0.2) 0%, rgba(212,137,58,0.85) 100%);
 }
 
-.final-content { position: relative; z-index: 2; }
+.final-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
 
 .final-phrase {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   color: #3D1A00;
   line-height: 2.3;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.8rem;
+}
+
+.final-phrase span {
+  display: block;
+  opacity: 0.6;
+  font-size: 0.75em;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
 }
 
 footer {
   text-align: center;
-  padding: 2rem;
+  padding: 2.5rem 1.5rem;
   border-top: 1px solid rgba(92,40,0,0.15);
 }
 
 footer p {
   font-size: 0.68rem;
-  color: rgba(61,26,0,0.4);
+  color: rgba(61,26,0,0.45);
   letter-spacing: 0.08em;
   line-height: 2;
 }
 
-/* REVEAL */
+.hero-img-frame {
+  position: relative;
+  margin: 3rem auto;
+  max-width: 860px;
+  padding: 18px;
+}
+.hero-frame-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 560px;
+  filter: saturate(1.05) contrast(1.02);
+}
+.frame-corner { position: absolute; width: 38px; height: 38px; z-index: 2; }
+.frame-tl { top: 0; left: 0; border-top: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
+.frame-tr { top: 0; right: 0; border-top: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
+.frame-bl { bottom: 0; left: 0; border-bottom: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
+.frame-br { bottom: 0; right: 0; border-bottom: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
+.frame-line { position: absolute; background: rgba(139,74,0,0.35); z-index: 2; }
+.frame-top    { top: 0;    left: 38px; right: 38px; height: 1px; }
+.frame-bottom { bottom: 0; left: 38px; right: 38px; height: 1px; }
+.frame-left   { left: 0;   top: 38px; bottom: 38px; width: 1px; }
+.frame-right  { right: 0;  top: 38px; bottom: 38px; width: 1px; }
+.hero-img-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,150,58,0.18), rgba(248,196,113,0.08), rgba(201,150,58,0.18));
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-img-frame::after {
+  content: '✦';
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8B4A00;
+  font-size: 1rem;
+  background: linear-gradient(160deg, #FCEABB, #F8C471);
+  padding: 0 0.6rem;
+  z-index: 3;
+}
+
+.dor-section {
+  padding: 5rem 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.dor-intro {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.dor-intro .label { margin-bottom: 1rem; }
+
+.dor-intro h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  color: #3D1A00;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.dor-intro p {
+  font-size: 1rem;
+  color: rgba(30,10,0,0.75);
+  line-height: 1.9;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.dor-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(92,40,0,0.15);
+  border: 1px solid rgba(92,40,0,0.15);
+  margin-bottom: 3rem;
+}
+
+.dor-card {
+  background: linear-gradient(145deg, rgba(252,234,187,0.7), rgba(245,208,138,0.5));
+  padding: 2rem 1.6rem;
+  transition: background 0.3s;
+}
+
+.dor-card:hover {
+  background: linear-gradient(145deg, rgba(252,234,187,0.95), rgba(245,208,138,0.8));
+}
+
+.dor-card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  opacity: 0.8;
+}
+
+.dor-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #3D1A00;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.dor-card p {
+  font-size: 0.85rem;
+  color: rgba(30,10,0,0.7);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.dor-espelho {
+  border-left: 2px solid rgba(139,74,0,0.4);
+  padding: 1.5rem 1.8rem;
+  margin: 2.5rem 0;
+  background: rgba(255,255,255,0.15);
+}
+
+.dor-espelho p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #3D1A00;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.dor-virada {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(92,40,0,0.2);
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+
+.dor-virada::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 20%; right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8B4A00, transparent);
+}
+
+.dor-virada p {
+  font-size: 1rem;
+  color: rgba(30,10,0,0.85);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.dor-virada p:last-child { margin-bottom: 0; }
+
+.dor-virada strong {
+  color: #3D1A00;
+  font-weight: 700;
+}
+
+.nao-religiao {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px dashed rgba(92,40,0,0.3);
+  background: rgba(255,255,255,0.12);
+}
+
+.nao-religiao-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.75;
+}
+
+.nao-religiao p {
+  font-size: 0.82rem;
+  color: rgba(30,10,0,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.nao-religiao strong {
+  color: #5C2800;
+  font-weight: 700;
+}
+
 .r {
   opacity: 0;
   transform: translateY(24px);
@@ -404,59 +667,45 @@ footer p {
 }
 .r.on { opacity: 1; transform: none; }
 
-/* MOBILE MELHORADO */
+@keyframes slideUp {
+  from { opacity:0; transform:translate(-50%,-46%); }
+  to   { opacity:1; transform:translate(-50%,-50%); }
+}
+#modal-checkout::-webkit-scrollbar { width:4px; }
+#modal-checkout::-webkit-scrollbar-track { background:transparent; }
+#modal-checkout::-webkit-scrollbar-thumb { background:rgba(92,40,0,0.3); border-radius:2px; }
+#modal-overlay { display:none !important; }
+#modal-checkout { display:none !important; }
+#modal-overlay.ativo { display:block !important; }
+#modal-checkout.ativo { display:block !important; }
+
+@media (max-width: 520px) {
+  .dor-cards { grid-template-columns: 1fr; }
+  .dor-section { padding: 3rem 1rem; }
+  .dor-card { padding: 1.5rem 1.2rem; }
+  .dor-espelho { padding: 1.2rem 1.2rem; }
+}
+
 @media (max-width: 480px) {
-  .hero { padding: 2rem 1rem; min-height: 100svh; }
+  .hero { padding: 2rem 1rem; min-height: 55vh; }
   h1 { font-size: 2.2rem; }
   .subtitle { font-size: 1rem; }
   .mantra { gap: 0.5rem; }
   .mantra span { font-size: 0.62rem; padding: 0.35rem 0.7rem; }
   .btn { padding: 0.9rem 2rem; font-size: 0.72rem; }
-
   .sec { padding: 3rem 1rem; }
   h2 { font-size: 1.5rem; }
-
-  .hero-img-frame { margin: 1.5rem auto; padding: 14px; }
-  .hero-frame-img { max-height: 360px; }
-
   .full-img { max-height: 260px; }
-
   .price-box { padding: 2rem 1rem; }
   .price-num { font-size: 3.8rem; }
   .btn-solid { padding: 0.9rem 1.5rem; font-size: 0.72rem; width: 100%; }
-
-  /* Modal mobile */
-  #modal-checkout {
-    width: 95vw !important;
-    max-height: 88vh !important;
-    top: 50% !important;
-  }
-  #modal-checkout [style*="flex:0 0 auto"] {
-    width: 100% !important;
-    max-height: 200px;
-    overflow: hidden;
-  }
-  #modal-checkout [style*="flex:0 0 auto"] img {
-    min-height: 180px !important;
-    max-height: 200px;
-    object-position: center 20% !important;
-  }
-  #modal-checkout [style*="flex:1;min-width"] {
-    padding: 1.2rem 1rem !important;
-    gap: 0.7rem !important;
-  }
-  #modal-checkout h3 { font-size: 1.05rem !important; }
-  #modal-checkout [style*="font-size:2.8rem"] { font-size: 2.2rem !important; }
-
+  #modal-checkout { width: 95vw !important; max-height: 88vh !important; top: 50% !important; }
   .items { margin-top: 1.5rem; }
   .item { padding: 1rem 1.2rem; gap: 0.9rem; }
   .item p { font-size: 0.88rem; }
-
   .faq-btn { font-size: 0.88rem; }
-
   .final { padding: 3rem 1rem; }
   .final-phrase { font-size: 1rem; line-height: 2; }
-
   footer p { font-size: 0.62rem; }
 }
 </style>
@@ -476,11 +725,12 @@ footer p {
       <span>Eu te amo</span>
       <span>Sou grato</span>
     </div>
+    <button class="btn" onclick="abrirModal()">Quero me curar agora</button>
   </div>
   <div class="scroll-hint"><span></span></div>
 </section>
 
-<!-- IMAGEM COM BORDA DECORATIVA -->
+<!-- IMAGEM COM MOLDURA -->
 <div class="hero-img-frame">
   <div class="frame-corner frame-tl"></div>
   <div class="frame-corner frame-tr"></div>
@@ -490,80 +740,71 @@ footer p {
   <div class="frame-line frame-bottom"></div>
   <div class="frame-line frame-left"></div>
   <div class="frame-line frame-right"></div>
-  <img src="principal.jpg" class="hero-frame-img" alt="Ho'oponopono">
+  <img src="principal.png" class="hero-frame-img" alt="Ho'oponopono">
 </div>
 
-<style>
-.hero-img-frame {
-  position: relative;
-  margin: 3rem auto;
-  max-width: 860px;
-  padding: 18px;
-}
+<!-- SEÇÃO DOR -->
+<section>
+  <div class="dor-section">
 
-.hero-frame-img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  max-height: 560px;
-  filter: saturate(1.05) contrast(1.02);
-}
+    <div class="dor-intro r">
+      <span class="label">Antes de continuar, preciso te perguntar</span>
+      <h2>Você já se cansou de carregar um peso que não é seu?</h2>
+      <p>Você tenta avançar. Tenta perdoar. Tenta recomeçar. Mas algo invisível continua puxando você de volta — para as mesmas situações, os mesmos sentimentos, as mesmas dores.</p>
+    </div>
 
-/* Cantos decorativos */
-.frame-corner {
-  position: absolute;
-  width: 38px;
-  height: 38px;
-  z-index: 2;
-}
-.frame-tl { top: 0; left: 0; border-top: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
-.frame-tr { top: 0; right: 0; border-top: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
-.frame-bl { bottom: 0; left: 0; border-bottom: 2px solid #8B4A00; border-left: 2px solid #8B4A00; }
-.frame-br { bottom: 0; right: 0; border-bottom: 2px solid #8B4A00; border-right: 2px solid #8B4A00; }
+    <div class="dor-cards r">
+      <div class="dor-card">
+        <span class="dor-card-icon">🔁</span>
+        <h3>Os mesmos padrões que se repetem</h3>
+        <p>Toda vez que parece que você saiu do ciclo, ele volta. Relacionamentos diferentes, mas a mesma dor. Empregos novos, mas a mesma sensação de estagnação.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-card-icon">💔</span>
+        <h3>Mágoas que não saem com o tempo</h3>
+        <p>Você tentou esquecer, tentou "seguir em frente", mas aquela ferida específica ainda dói quando você menos espera. E você não entende por quê.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-card-icon">🧱</span>
+        <h3>A sensação de estar presa numa vida que não é a sua</h3>
+        <p>Existe uma versão de você que sabe que merece mais. Mais paz, mais amor, mais abundância. Mas algo sempre bloqueia antes de chegar lá.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-card-icon">😶</span>
+        <h3>Culpa que você carrega em silêncio</h3>
+        <p>Situações do passado que você não consegue soltar. Pessoas que você magoou, ou que te magoaram, e que ainda ocupam espaço dentro de você.</p>
+      </div>
+    </div>
 
-/* Linhas centrais finas */
-.frame-line { position: absolute; background: rgba(139,74,0,0.35); z-index: 2; }
-.frame-top    { top: 0;    left: 38px; right: 38px; height: 1px; }
-.frame-bottom { bottom: 0; left: 38px; right: 38px; height: 1px; }
-.frame-left   { left: 0;   top: 38px; bottom: 38px; width: 1px; }
-.frame-right  { right: 0;  top: 38px; bottom: 38px; width: 1px; }
+    <div class="dor-espelho r">
+      <p>"Eu já tentei de tudo. Li livros, fiz terapia, tentei perdoar. Mas a mesma dor volta. Às vezes sinto que estou condenada a repetir isso para sempre."</p>
+    </div>
 
-/* Brilho dourado atrás da imagem */
-.hero-img-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(201,150,58,0.18), rgba(248,196,113,0.08), rgba(201,150,58,0.18));
-  pointer-events: none;
-  z-index: 1;
-}
-/* Ornamento central topo e base */
-.hero-img-frame::after {
-  content: '✦';
-  position: absolute;
-  top: -0.7rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #8B4A00;
-  font-size: 1rem;
-  background: linear-gradient(160deg, #FCEABB, #F8C471);
-  padding: 0 0.6rem;
-  z-index: 3;
-}
-</style>
+    <div class="dor-virada r">
+      <p>O problema não está em você. Está nas <strong>memórias gravadas no seu subconsciente</strong> — camadas de dor acumuladas ao longo de anos que continuam operando nos bastidores da sua vida, sabotando suas escolhas sem que você perceba.</p>
+      <p>Ho'oponopono não é mais uma técnica de autoajuda. É uma limpeza profunda dessas memórias. Quando você remove o que está bloqueando, <strong>a vida começa a fluir naturalmente</strong> — nos relacionamentos, no dinheiro, na paz interior.</p>
+    </div>
+
+    <div class="nao-religiao r">
+      <span class="nao-religiao-icon">✦</span>
+      <p><strong>Nota importante:</strong> Ho'oponopono não tem nada a ver com religião, seita ou crença específica. É uma prática espiritual havaiana de cura emocional que pode ser usada por qualquer pessoa, independente da sua fé ou ausência dela. Você não precisa acreditar em nada para começar — apenas estar disposto a se libertar.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="line">
 
 <!-- SOBRE -->
-
 <div class="sec sec-center">
-  <span class="label r">O iBook</span>
+  <span class="label r">O E-book</span>
   <h2 class="r">Uma prática que transforma por dentro</h2>
   <p class="r">Ho'oponopono é a arte havaiana de curar memórias que nos prendem — mágoas, culpas, padrões que se repetem. Com quatro frases simples, você inicia um processo profundo de limpeza interior que muda tudo ao seu redor.</p>
 </div>
 
 <hr class="line">
 
-<!-- IMAGEM + CONTEÚDO -->
-
+<!-- O QUE ESTÁ INCLUÍDO -->
 <div class="sec">
   <span class="label r">O que está incluído</span>
   <h2 class="r">Tudo que você precisa para começar</h2>
@@ -580,178 +821,17 @@ footer p {
 <hr class="line">
 
 <!-- PREÇO -->
-
 <div class="sec sec-center" id="comprar">
   <span class="label r">Invista na sua cura</span>
   <h2 class="r">Comece hoje</h2>
   <div class="price-box r">
     <p class="price-title">Ho'oponopono: O Milagre da Cura Interior</p>
-    <div class="price-num"><span class="price-curr">R$</span>47</div>
+    <div class="price-num"><span class="price-curr">R$</span><span class="val-principal"></span></div>
     <p class="price-note">pagamento único · acesso vitalício</p>
     <button class="btn-solid" onclick="abrirModal()">Comprar agora</button>
     <p class="secure">🔒 Pagamento 100% seguro · Download imediato</p>
   </div>
 </div>
-
-<div id="modal-overlay" onclick="fecharModal()" style="
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(20,8,0,0.75);
-  z-index:1000;
-  backdrop-filter:blur(6px);
-"></div>
-
-<div id="modal-checkout" style="
-  display:none;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:1001;
-  width:min(92vw, 820px);
-  max-height:90vh;
-  overflow-y:auto;
-  background:linear-gradient(145deg,#FDF3DC,#F5DFA0);
-  box-shadow:0 30px 80px rgba(20,8,0,0.5);
-  animation: slideUp 0.35s ease;
-  padding:6px;
-">
-  <!-- Borda decorativa externa -->
-  <div style="
-    position:relative;
-    border:1px solid rgba(139,74,0,0.6);
-    padding:4px;
-  ">
-    <!-- Segundo fio interno -->
-    <div style="
-      position:relative;
-      border:1px solid rgba(139,74,0,0.25);
-    ">
-      <!-- Cantos ornamentais -->
-      <div style="position:absolute;top:-1px;left:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-left:2px solid #8B4A00;"></div>
-      <div style="position:absolute;top:-1px;right:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-right:2px solid #8B4A00;"></div>
-      <div style="position:absolute;bottom:-1px;left:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-left:2px solid #8B4A00;"></div>
-      <div style="position:absolute;bottom:-1px;right:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-right:2px solid #8B4A00;"></div>
-      <!-- Ornamento topo centro -->
-      <div style="position:absolute;top:-0.65rem;left:50%;transform:translateX(-50%);background:linear-gradient(160deg,#FDF3DC,#F5DFA0);padding:0 0.8rem;color:#8B4A00;font-size:0.9rem;letter-spacing:0.3em;">✦ ✦ ✦</div>
-
-      <!-- Botão fechar -->
-      <button onclick="fecharModal()" style="
-        position:absolute;
-        top:0.7rem;right:0.9rem;
-        background:none;border:none;
-        font-size:1.2rem;color:#5C2800;
-        cursor:pointer;line-height:1;z-index:2;
-        opacity:0.7;
-      ">✕</button>
-
-      <div style="display:flex;flex-wrap:wrap;">
-
-        <!-- Coluna esquerda: imagem -->
-        <div style="flex:0 0 auto;width:min(100%,300px);">
-          <img src="principal.jpg"
-            style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:300px;" alt="Ho'oponopono">
-        </div>
-
-        <!-- Coluna direita -->
-        <div style="flex:1;min-width:240px;padding:2rem 1.6rem;display:flex;flex-direction:column;gap:1rem;">
-
-          <span style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:#8B4A00;font-weight:600;">Seu pedido</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A0A00;line-height:1.3;margin:0;">Ho'oponopono:<br><em>O Milagre da Cura Interior</em></h3>
-
-          <!-- Linha decorativa -->
-          <div style="display:flex;align-items:center;gap:0.5rem;">
-            <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(139,74,0,0.4));"></div>
-            <span style="color:#8B4A00;font-size:0.6rem;">✦</span>
-            <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(139,74,0,0.4),transparent);"></div>
-          </div>
-
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">
-            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Guia espiritual completo em PDF</li>
-            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Cura emocional, financeira e de relacionamentos</li>
-            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Plano de 21 dias de prática guiada</li>
-            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Acesso vitalício · Download imediato</li>
-          </ul>
-
-          <div style="border-top:1px solid rgba(92,40,0,0.2);padding-top:0.9rem;display:flex;align-items:baseline;gap:0.4rem;">
-            <span style="font-size:0.85rem;color:#5C2800;">R$</span>
-            <span style="font-family:'Playfair Display',serif;font-size:2.8rem;color:#1A0A00;line-height:1;">47</span>
-            <span style="font-size:0.7rem;color:#8B4A00;letter-spacing:0.08em;">pagamento único</span>
-          </div>
-
-          <!-- Só nome -->
-          <input id="campo-nome" type="text" placeholder="Seu nome completo" style="
-            padding:0.75rem 1rem;
-            border:1px solid rgba(92,40,0,0.35);
-            background:rgba(255,255,255,0.65);
-            color:#1A0A00;
-            font-family:'Nunito',sans-serif;
-            font-size:0.88rem;
-            outline:none;
-            width:100%;
-          ">
-
-          <button onclick="irParaPagamento()" style="
-            background:linear-gradient(135deg,#5C2800,#8B4A00,#6B3500);
-            color:#FCEABB;
-            font-family:'Nunito',sans-serif;
-            font-size:0.8rem;
-            font-weight:700;
-            letter-spacing:0.22em;
-            text-transform:uppercase;
-            padding:1rem;
-            border:none;
-            cursor:pointer;
-            width:100%;
-            box-shadow:0 0 25px rgba(92,40,0,0.3);
-            transition:all 0.3s;
-          " onmouseover="this.style.boxShadow='0 0 45px rgba(92,40,0,0.55)'"
-             onmouseout="this.style.boxShadow='0 0 25px rgba(92,40,0,0.3)'">
-            Finalizar pagamento →
-          </button>
-
-          <p style="font-size:0.65rem;color:rgba(30,10,0,0.45);text-align:center;letter-spacing:0.05em;">🔒 Pagamento 100% seguro · Seus dados estão protegidos</p>
-        </div>
-      </div>
-
-      <!-- Ornamento base centro -->
-      <div style="text-align:center;padding:0.5rem 0 0.8rem;color:#8B4A00;font-size:0.6rem;letter-spacing:0.5em;opacity:0.6;">✦ ✦ ✦</div>
-    </div>
-  </div>
-</div>
-
-<style>
-@keyframes slideUp {
-  from { opacity:0; transform:translate(-50%,-46%); }
-  to   { opacity:1; transform:translate(-50%,-50%); }
-}
-#modal-checkout::-webkit-scrollbar { width:4px; }
-#modal-checkout::-webkit-scrollbar-track { background:transparent; }
-#modal-checkout::-webkit-scrollbar-thumb { background:rgba(92,40,0,0.3); border-radius:2px; }
-</style>
-
-<script>
-function abrirModal() {
-  document.getElementById('modal-overlay').style.display = 'block';
-  document.getElementById('modal-checkout').style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
-function fecharModal() {
-  document.getElementById('modal-overlay').style.display = 'none';
-  document.getElementById('modal-checkout').style.display = 'none';
-  document.body.style.overflow = '';
-}
-function irParaPagamento() {
-  const nome = document.getElementById('campo-nome').value.trim();
-  if (!nome) {
-    alert('Por favor, preencha seu nome para continuar.');
-    return;
-  }
-  // ← Substitua a URL abaixo pelo seu link de pagamento real
-  window.location.href = 'https://SEU-LINK-DE-PAGAMENTO.com';
-}
-</script>
 
 <hr class="line">
 
@@ -762,7 +842,7 @@ function irParaPagamento() {
   <div class="r">
     <div class="faq-item">
       <button class="faq-btn">Preciso ter experiência espiritual?<i class="faq-icon">+</i></button>
-      <div class="faq-ans"><p>Não. O iBook é escrito de forma simples e acessível para qualquer pessoa, independente do nível de conhecimento espiritual.</p></div>
+      <div class="faq-ans"><p>Não. O E-book é escrito de forma simples e acessível para qualquer pessoa, independente do nível de conhecimento espiritual.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-btn">Como recebo após a compra?<i class="faq-icon">+</i></button>
@@ -770,29 +850,227 @@ function irParaPagamento() {
     </div>
     <div class="faq-item">
       <button class="faq-btn">Quando começo a ver resultados?<i class="faq-icon">+</i></button>
-      <div class="faq-ans"><p>Muitas pessoas sentem leveza já nas primeiras práticas. A transformação profunda vem com a constância — o iBook inclui um plano de 21 dias para guiar você.</p></div>
+      <div class="faq-ans"><p>Muitas pessoas sentem leveza já nas primeiras práticas. A transformação profunda vem com a constância — o E-book inclui um plano de 21 dias para guiar você.</p></div>
     </div>
   </div>
 </div>
 
+<hr class="line">
 
+<!-- SEÇÃO FINAL -->
+<section class="final">
+  <div class="final-bg"></div>
+  <div class="final-overlay"></div>
+  <div class="final-content r">
+    <div class="final-phrase">
+      Sinto muito.
+      <span>Me perdoe.</span>
+      Eu te amo.
+      <span>Sou grato.</span>
+    </div>
+    <button class="btn-solid" onclick="abrirModal()">Começar minha cura agora</button>
+  </div>
+</section>
 
 <footer>
-  <p>© 2025 Ho'oponopono: O Milagre da Cura Interior · Todos os direitos reservados</p>
+  <p>© 2026 Ho'oponopono: O Milagre da Cura Interior · Todos os direitos reservados</p>
+  <p style="margin-top:0.4rem;">Este produto é digital. Após a compra você receberá o acesso imediato por e-mail.</p>
 </footer>
 
+<!-- MODAL OVERLAY -->
+<div id="modal-overlay" onclick="fecharModal()" style="
+  position:fixed;
+  inset:0;
+  background:rgba(20,8,0,0.75);
+  z-index:1000;
+  backdrop-filter:blur(6px);
+"></div>
+
+<div id="modal-checkout" style="
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1001;
+  width:min(92vw, 820px);
+  max-height:90vh;
+  overflow-y:auto;
+  background:linear-gradient(145deg,#FDF3DC,#F5DFA0);
+  box-shadow:0 30px 80px rgba(20,8,0,0.6);
+  animation: slideUp 0.35s ease;
+  padding:6px;
+">
+  <div style="position:relative;border:1px solid rgba(139,74,0,0.6);padding:4px;">
+    <div style="position:relative;border:1px solid rgba(139,74,0,0.25);">
+      <div style="position:absolute;top:-1px;left:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-left:2px solid #8B4A00;z-index:3;"></div>
+      <div style="position:absolute;top:-1px;right:-1px;width:28px;height:28px;border-top:2px solid #8B4A00;border-right:2px solid #8B4A00;z-index:3;"></div>
+      <div style="position:absolute;bottom:-1px;left:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-left:2px solid #8B4A00;z-index:3;"></div>
+      <div style="position:absolute;bottom:-1px;right:-1px;width:28px;height:28px;border-bottom:2px solid #8B4A00;border-right:2px solid #8B4A00;z-index:3;"></div>
+      <div style="position:absolute;top:-0.65rem;left:50%;transform:translateX(-50%);background:linear-gradient(160deg,#FDF3DC,#F5DFA0);padding:0 0.8rem;color:#8B4A00;font-size:0.9rem;letter-spacing:0.3em;z-index:4;">✦ ✦ ✦</div>
+      <button onclick="fecharModal()" style="position:absolute;top:0.7rem;right:0.7rem;width:2rem;height:2rem;background:rgba(20,8,0,0.55);border:1px solid rgba(252,234,187,0.3);border-radius:50%;color:#FCEABB;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;backdrop-filter:blur(4px);" onmouseover="this.style.background='rgba(20,8,0,0.85)'" onmouseout="this.style.background='rgba(20,8,0,0.55)'">✕</button>
+      <div style="display:flex;flex-wrap:wrap;">
+        <div style="flex:0 0 auto;width:100%;">
+          <img src="comprar.jpeg" style="width:100%;object-fit:cover;object-position:center top;display:block;max-height:60vw;min-height:220px;" alt="Ho'oponopono">
+        </div>
+        <div style="flex:1;min-width:240px;padding:2rem 1.6rem;display:flex;flex-direction:column;gap:1rem;">
+          <span style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:#8B4A00;font-weight:600;">Seu pedido</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A0A00;line-height:1.3;margin:0;">Ho'oponopono:<br><em>O Milagre da Cura Interior</em></h3>
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(139,74,0,0.4));"></div>
+            <span style="color:#8B4A00;font-size:0.6rem;">✦</span>
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(139,74,0,0.4),transparent);"></div>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Guia espiritual completo em PDF</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Cura emocional, financeira e de relacionamentos</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Plano de 21 dias de prática guiada</li>
+            <li style="font-size:0.82rem;color:#2E1000;display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:#8B4A00;margin-top:1px;flex-shrink:0;">✦</span>Acesso vitalício · Download imediato</li>
+          </ul>
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:-0.3rem;">
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(139,74,0,0.35));"></div>
+            <span style="font-size:0.5rem;letter-spacing:0.35em;text-transform:uppercase;color:#8B4A00;font-weight:700;">✦ Adicione ao seu pedido ✦</span>
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(139,74,0,0.35),transparent);"></div>
+          </div>
+
+          <!-- BUMPS gerados automaticamente pelo JS conforme BUMP_ATIVO -->
+          <div id="bumps-container" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+
+          <!-- TOTAL DINÂMICO -->
+          <div style="border-top:1px solid rgba(92,40,0,0.2);padding-top:0.9rem;">
+            <div style="display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.3rem;">
+              <span style="font-size:0.85rem;color:#5C2800;">R$</span>
+              <span id="total-price" style="font-family:'Playfair Display',serif;font-size:2.8rem;color:#1A0A00;line-height:1;transition:transform 0.25s;"></span>
+              <span style="font-size:0.7rem;color:#8B4A00;letter-spacing:0.08em;">pagamento único</span>
+            </div>
+            <div id="resumo-bumps" style="font-size:0.72rem;color:#5C2800;line-height:1.7;min-height:1rem;"></div>
+          </div>
+
+          <button onclick="irParaPagamento()" style="background:linear-gradient(135deg,#5C2800,#8B4A00,#6B3500);color:#FCEABB;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;padding:1rem;border:none;cursor:pointer;width:100%;box-shadow:0 0 25px rgba(92,40,0,0.3);transition:all 0.3s;" onmouseover="this.style.boxShadow='0 0 45px rgba(92,40,0,0.55)'" onmouseout="this.style.boxShadow='0 0 25px rgba(92,40,0,0.3)'">Finalizar pagamento →</button>
+          <p style="font-size:0.65rem;color:rgba(30,10,0,0.45);text-align:center;letter-spacing:0.05em;">🔒 Pagamento 100% seguro · Seus dados estão protegidos</p>
+        </div>
+      </div>
+      <div style="text-align:center;padding:0.5rem 0 0.8rem;color:#8B4A00;font-size:0.6rem;letter-spacing:0.5em;opacity:0.6;">✦ ✦ ✦</div>
+    </div>
+  </div>
+</div>
+
 <script>
+// ⛔ NÃO MEXA ABAIXO DESTA LINHA
+
+// Mapa de preços por id
+const PRECOS = {
+  1: PRECO_BUMP1,
+  2: PRECO_BUMP2,
+  3: PRECO_BUMP3,
+  4: PRECO_BUMP4,
+};
+
+// Estado: quais bumps o cliente marcou (só entre os ativos)
+const bumpMarcado = { 1: false, 2: false, 3: false, 4: false };
+
+// ── Gera os cards de bump dinamicamente ──────────────────────
+function renderBumps() {
+  const container = document.getElementById('bumps-container');
+  if (!container) return;
+  container.innerHTML = '';
+  [1, 2, 3, 4].forEach(id => {
+    if (!BUMP_ATIVO[id]) return; // oculta se false
+    const div = document.createElement('div');
+    div.id = 'bump' + id;
+    div.className = 'bump-box';
+    div.style.cssText = 'border:2px dashed rgba(139,74,0,0.45);background:linear-gradient(135deg,rgba(252,234,187,0.6),rgba(245,208,138,0.4));padding:0.9rem 1rem;cursor:pointer;transition:all 0.25s;';
+    div.onclick = () => toggleBump(id);
+    div.innerHTML = `
+      <div style="display:flex;align-items:flex-start;gap:0.8rem;">
+        <div id="chk${id}" style="width:20px;height:20px;border:2px solid #8B4A00;border-radius:2px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:transparent;">
+          <span class="bump-tk" style="color:#FCEABB;font-size:0.75rem;display:none;">✓</span>
+        </div>
+        <div style="flex:1;">
+          <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#1A0A00;font-weight:700;margin:0 0 0.25rem;">${BUMP_TITULO[id]}</p>
+          <p style="font-size:0.76rem;color:rgba(30,10,0,0.68);line-height:1.55;margin:0 0 0.4rem;">${BUMP_DESCRICAO[id]}</p>
+          <p style="font-size:0.8rem;color:#5C2800;font-weight:700;margin:0;">+ R$${PRECOS[id]} <span style="font-weight:400;font-size:0.68rem;color:rgba(30,10,0,0.45);">apenas</span></p>
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+// ── Modal ─────────────────────────────────────────────────────
+function abrirModal() {
+  document.getElementById('modal-overlay').classList.add('ativo');
+  document.getElementById('modal-checkout').classList.add('ativo');
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal() {
+  document.getElementById('modal-overlay').classList.remove('ativo');
+  document.getElementById('modal-checkout').classList.remove('ativo');
+  document.body.style.overflow = '';
+}
+
+// ── Preços na página ──────────────────────────────────────────
+function aplicarPrecos() {
+  document.querySelectorAll('.val-principal').forEach(el => el.textContent = PRECO_PRINCIPAL);
+  recalcularTotal();
+}
+
+// ── Total dinâmico ────────────────────────────────────────────
+function recalcularTotal() {
+  let total = PRECO_PRINCIPAL;
+  let resumo = [];
+  [1, 2, 3, 4].forEach(id => {
+    if (BUMP_ATIVO[id] && bumpMarcado[id]) {
+      total += PRECOS[id];
+      resumo.push('✦ ' + BUMP_TITULO[id] + ' +R$' + PRECOS[id]);
+    }
+  });
+  const elTotal = document.getElementById('total-price');
+  if (elTotal) {
+    elTotal.textContent = total;
+    elTotal.style.transform = 'scale(1.1)';
+    setTimeout(() => elTotal.style.transform = 'scale(1)', 250);
+  }
+  const resumoEl = document.getElementById('resumo-bumps');
+  if (resumoEl) resumoEl.innerHTML = resumo.join('<br>');
+}
+
+// ── Marcar / desmarcar bump ───────────────────────────────────
+function toggleBump(id) {
+  bumpMarcado[id] = !bumpMarcado[id];
+  const chk = document.getElementById('chk' + id);
+  const tk  = chk.querySelector('.bump-tk');
+  const box = document.getElementById('bump' + id);
+  if (bumpMarcado[id]) {
+    chk.style.background = '#8B4A00'; tk.style.display = 'block';
+    box.style.borderColor = '#8B4A00';
+    box.style.background = 'linear-gradient(135deg,rgba(139,74,0,0.12),rgba(245,208,138,0.55))';
+  } else {
+    chk.style.background = 'transparent'; tk.style.display = 'none';
+    box.style.borderColor = 'rgba(139,74,0,0.45)';
+    box.style.background = 'linear-gradient(135deg,rgba(252,234,187,0.6),rgba(245,208,138,0.4))';
+  }
+  recalcularTotal();
+}
+
+// ── Link de pagamento pela combinação de bumps marcados ───────
+function irParaPagamento() {
+  const chave = [1, 2, 3, 4]
+    .filter(id => BUMP_ATIVO[id] && bumpMarcado[id])
+    .map(id => 'B' + id)
+    .join('_');
+  const link = LINKS[chave] || LINKS[''];
+  window.location.href = link;
+}
+
+// ── Reveal on scroll ──────────────────────────────────────────
 const els = document.querySelectorAll('.r');
 const obs = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('on'), i * 60);
-      obs.unobserve(e.target);
-    }
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 60); obs.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
 els.forEach(el => obs.observe(el));
 
+// ── FAQ accordion ─────────────────────────────────────────────
 document.querySelectorAll('.faq-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
@@ -801,6 +1079,10 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
     if (!isOpen) item.classList.add('open');
   });
 });
+
+// ── Inicializar ───────────────────────────────────────────────
+renderBumps();
+aplicarPrecos();
 </script>
 </body>
 </html>
